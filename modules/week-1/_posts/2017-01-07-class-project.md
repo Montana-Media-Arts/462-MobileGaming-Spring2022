@@ -5,7 +5,7 @@ module: 1
 
 # Class Project
 
-This semester, we have been asked to work in collaboration with another institution. We are building a game that teaches students about majors at a university.  We have a few things we must determine.
+This semester, we are creating a gamified augmented reality campus tour for the University of Montana.
 
 * What do we need to do?
 * What is the subject matter?
