@@ -27,8 +27,9 @@ Inside the function, we begin by creating a new instance of an asteroid named ne
 
 ```lua
 local function createAsteroid()
- 
-    local newAsteroid = display.newImageRect( mainGroup, objectSheet, 1, 102, 85 )
+    local mainGroup = display.newGroup()
+    local newAsteroid = display.newImageRect( objectSheet, 1, 102, 85 )
+    mainGroup:insert(newAsteroid)
 end
 ```
 
@@ -36,9 +37,10 @@ Since there will be a lot of asteroids on the screen at any given time, we need 
 
 ```lua
 local function createAsteroid()
- 
+    local mainGroup = display.newGroup()
     local newAsteroid = display.newImageRect( mainGroup, objectSheet, 1, 102, 85 )
     table.insert( asteroidsTable, newAsteroid )
+    mainGroup:insert(newAsteroid)
 end
 ```
 
@@ -46,10 +48,11 @@ With the asteroid image now loaded and placed into the table, we can add it to t
 
 ```lua
 local function createAsteroid()
- 
+    local mainGroup = display.newGroup()
     local newAsteroid = display.newImageRect( mainGroup, objectSheet, 1, 102, 85 )
     table.insert( asteroidsTable, newAsteroid )
     physics.addBody( newAsteroid, "dynamic", { radius=40, bounce=0.8 } )
+    mainGroup:insert(newAsteroid)
 end
 ```
 ### Note
@@ -59,11 +62,12 @@ Finally, let's assign the asteroid a myName property of "asteroid". Later, when 
 
 ```lua
 local function createAsteroid()
- 
+    local mainGroup = display.newGroup()
     local newAsteroid = display.newImageRect( mainGroup, objectSheet, 1, 102, 85 )
     table.insert( asteroidsTable, newAsteroid )
     physics.addBody( newAsteroid, "dynamic", { radius=40, bounce=0.8 } )
     newAsteroid.myName = "asteroid"
+    mainGroup:insert(newAsteroid)
 end
 ```
 
@@ -74,12 +78,14 @@ Now that we have a new asteroid on the screen, let's set its point of origin. Fo
 Given three possible points of origin, we need Lua to generate a random integer between 1 and 3. This is easily done using the math.random() command with a sole parameter of 3:
 
 ```lua
+    local mainGroup = display.newGroup()
     local newAsteroid = display.newImageRect( mainGroup, objectSheet, 1, 102, 85 )
     table.insert( asteroidsTable, newAsteroid )
     physics.addBody( newAsteroid, "dynamic", { radius=40, bounce=0.8 } )
     newAsteroid.myName = "asteroid"
  
     local whereFrom = math.random( 3 )
+    mainGroup:insert(newAsteroid)
 end
 ```
 

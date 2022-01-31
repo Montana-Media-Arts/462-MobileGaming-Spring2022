@@ -11,8 +11,11 @@ Now let's place UI labels for the player's lives and score on the screen:
 ```lua
 
 -- Display lives and score
-livesText = display.newText( uiGroup, "Lives: " .. lives, 200, 80, native.systemFont, 36 )
-scoreText = display.newText( uiGroup, "Score: " .. score, 400, 80, native.systemFont, 36 )
+local uiGroup = display.newGroup()
+livesText = display.newText( "Lives: " .. lives, 200, 80, native.systemFont, 36 )
+scoreText = display.newText( "Score: " .. score, 400, 80, native.systemFont, 36 )
+uiGroup:insert(livesText)
+uiGroup:insert(scoreText)
 ```
 
 To keep things simple, we use a special Lua method with the labels to show our lives and score. Placing two periods together in Lua (..) is called concatenation. Concatenation joins two strings into one. Thus, in the livesText = display.newText() command above, we are joining the string Lives: and the variable lives for a result of Lives: 3 being displayed on the screen (remember that we set the initial value of lives to 3 earlier). Similarly, for scoreText, we join the string Score: and the variable score for a result of Score: 0.
