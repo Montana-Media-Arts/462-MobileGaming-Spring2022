@@ -6,4 +6,4 @@ jotted: false
 
 # Conclusions
 
-This week it was all about AR and how we might integrate this into the main project.
+This week you worked on the class project.
